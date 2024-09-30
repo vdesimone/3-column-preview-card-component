@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Lexend+Deca:wght@100..900&display=swap');
+:root {
+  --bright-orange: hsl(31, 77%, 52%);
+  --dark-cyan: hsl(184, 100%, 22%);
+  --very-dark-cyan: hsl(179, 100%, 13%);
+  --transparent-white: hsla(0, 0%, 100%, 0.75);
+  --very-light-grey: hsl(0, 0%, 95%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Lexend Deca", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 10px;
+  max-width: 950px;
+  min-height: 520px;
+  background-color: grey;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 55px;
+}
+.card:first-child {
+  border-radius: 10px 0px 0px 10px;
+}
+.card:nth-child(2) {
+  border-radius: 0px;
+}
+.card:last-child {
+  border-radius: 0px 10px 10px 0px;
+}
+.card-description h1 {
+  font-family: "Big Shoulders Display", sans-serif;
+  text-transform: uppercase;
+  color: var(--very-light-grey);
+}
+.card-description p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--transparent-white);
+}
+.card-description img, h1, p {
+  margin-bottom: 25px;
+}
+.card button {
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  width: 75%;
+  background-color: var(--very-light-grey);
+}
