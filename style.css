@@ -18,6 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100dvh;
+  overflow: hidden;
 }
 .container {
   display: grid;
@@ -26,6 +27,11 @@ body {
   max-width: 950px;
   min-height: 520px;
   background-color: grey;
+  max-height: 100dvh;
+  overflow-y: auto;
+}
+.container::-webkit-scrollbar {
+  display: none;
 }
 .card {
   display: flex;
@@ -42,6 +48,9 @@ body {
 .card:last-child {
   border-radius: 0px 10px 10px 0px;
 }
+.card-description img, h1, p {
+  margin-bottom: 25px;
+}
 .card-description h1 {
   font-family: "Big Shoulders Display", sans-serif;
   text-transform: uppercase;
@@ -52,13 +61,34 @@ body {
   line-height: 1.8;
   color: var(--transparent-white);
 }
-.card-description img, h1, p {
-  margin-bottom: 25px;
-}
 .card button {
   padding: 15px;
   border-radius: 50px;
   border: none;
   width: 75%;
   background-color: var(--very-light-grey);
+}
+
+@media screen and (max-width: 834px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 15px;
+    max-height: calc(100dvh - 30px);
+  }
+  .card:first-child {
+    border-radius: 10px 10px 0px 0px;
+  }
+  .card:nth-child(2) {
+    border-radius: 0px;
+  }
+  .card:last-child {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .card button {
+    padding: 15px;
+    border-radius: 50px;
+    border: none;
+    width: 75%;
+    background-color: var(--very-light-grey);
+  }
 }
