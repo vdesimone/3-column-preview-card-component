@@ -6,7 +6,7 @@
     "color": "var(--bright-orange)"
   },
   {
-    "type": "Suvs",
+    "type": "SUVs",
     "description": "Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation and off-road adventures.",
     "icon": "images/icon-suvs.svg",
     "color": "var(--dark-cyan)"
