@@ -1,42 +1,51 @@
-fetch("data.json")
-  .then(response => {
+async function fetchData() {
+  try {
+    const response = await fetch("data.json");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    return response.json();
-  })
-  .then(data => {
-    data.forEach((item, index) => {
-      const card = document.querySelectorAll(".card")[index];
-      if (card) {
-        setupCard(card, item, index)
-      }
-    })
-  })
-  .catch(error => {
+    const data = await response.json();
+    setupCards(data);
+  } catch (error) {
     console.log("There was a problem with the fetch operation: ", error);
-  });
-
-function setupCard(card, item, index) {
-  const cardImage = document.querySelectorAll(".card-description img")[index];
-  const cardHeader = document.querySelectorAll(".card-description h1")[index];
-  const cardParagraph = document.querySelectorAll(".card-description p")[index];
-  const cardButton = document.querySelectorAll(".card button")[index];
-
-  card.style.backgroundColor = item.color;
-
-  if (cardImage) {
-    cardImage.src = item.icon;
-    cardImage.alt = `${item.type} Icon`;
-  }
-  if (cardHeader) {
-    cardHeader.textContent = item.type;
-  }
-  if (cardParagraph) {
-    cardParagraph.textContent = item.description;
-  }
-  if (cardButton) {
-    cardButton.style.color = item.color;
   }
 }
 
+function setupCards(data) {
+  const cards = document.querySelectorAll(".card");
+  const cardImages = document.querySelectorAll(".card-description img");
+  const cardHeaders = document.querySelectorAll(".card-description h1");
+  const cardParagraphs = document.querySelectorAll(".card-description p");
+  const cardButtons = document.querySelectorAll(".card button");
+
+  data.forEach((item, index) => {
+    const card = cards[index];
+    if (card) {
+      setupCard(card, item, {
+        image: cardImages[index],
+        header: cardHeaders[index],
+        paragraph: cardParagraphs[index],
+        button: cardButtons[index]
+      });
+    }
+  })
+}
+
+function setupCard(card, item, { image, header, paragraph, button }) {
+  card.style.backgroundColor = item.color;
+  if (image) {
+    image.src = item.icon;
+    image.alt = `${item.type} Icon`;
+  }
+  if (header) {
+    header.textContent = item.type;
+  }
+  if (paragraph) {
+    paragraph.textContent = item.description;
+  }
+  if (button) {
+    button.style.color = item.color;
+  }
+}
+
+fetchData();
