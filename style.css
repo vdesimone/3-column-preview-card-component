@@ -68,6 +68,12 @@ body {
   width: 75%;
   background-color: var(--very-light-grey);
 }
+.card button:hover {
+  cursor: pointer;
+  color: var(--very-light-grey) !important;
+  background-color: transparent;
+  outline: 2px solid var(--very-light-grey);
+}
 
 @media screen and (max-width: 834px) {
   .container {
